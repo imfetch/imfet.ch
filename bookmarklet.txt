@@ -1,0 +1,1 @@
+javascript:(window.imfetch||function(a){var b=document,c=b.createElement("script");return c.type="text/javascript",c.src=a,b.body.appendChild(c),!1})("//imfet.ch/b.js");
