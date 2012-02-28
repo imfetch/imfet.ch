@@ -1,0 +1,32 @@
+<!DOCTYPE html><%=
+
+content_tag(:html,
+  :lang => :en,
+  :'itemscope itemtype' => 'http://schema.org/Product',
+  :'xmlns:og' => 'http://ogp.me/ns#',
+  :'xmlns:fb' => 'http://ogp.me/ns/fb#'
+) {
+  content_tag(:head) {
+    tag(:meta, :charset => 'utf-8') +
+    tag(:meta, :'http-equiv' => 'X-UA-Compatible', :content => 'IE=Edge,chrome=1') +
+    tag(:meta, :property => 'og:url',         :content => url) +
+    tag(:meta, :property => 'og:title',       :content => title) +
+    tag(:meta, :property => 'og:site_name',   :content => title) +
+    tag(:meta, :property => 'og:locale',      :content => 'en_US') +
+    tag(:meta, :property => 'og:description', :content => description) +
+    tag(:meta, :property => 'og:image',       :content => assets_path('icon-512x512.png')) +
+    tag(:meta, :itemprop => 'name',           :content => title) +
+    tag(:meta, :itemprop => 'description',    :content => description) +
+    tag(:meta, :itemprop => 'image',          :content => assets_path('icon-512x512.png')) +
+    tag(:meta, :name     => 'description',    :content => description) +
+    tag(:meta, :name     => 'viewport',       :content => 'width=640,user-scalable=no,initial-scale=0.5') +
+    tag(:link, :rel => 'stylesheet', :href => assets_path('application.css'), :type => 'text/css') +
+    content_tag(:script, '', :src => assets_path('application.js'), :type => 'text/javascript') +
+    apple_touch_icon +
+    apple_touch_icon(72) +
+    apple_touch_icon(114)
+  } +
+  content_tag(:body, yield.html_safe, :id => @body_id)
+}
+
+%>

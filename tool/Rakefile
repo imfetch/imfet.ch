@@ -1,0 +1,20 @@
+#!/usr/bin/env rake
+
+require File.expand_path('../app/site', __FILE__)
+@site = Site.new(ENV['SITE_HOST'])
+@site.view_path = File.expand_path('../views', __FILE__)
+
+task :default => :compile
+
+task :compile do |t|
+  write('index.html', @site.render('index'))
+  write('assets/application.js', @site.js)
+  write('assets/application.css', @site.css)
+end
+
+def write filename, content
+  path = File.expand_path('../../'+ filename, __FILE__)
+  File.open path, 'w' do |file|
+    file.write(content)
+  end
+end
