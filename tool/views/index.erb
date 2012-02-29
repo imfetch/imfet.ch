@@ -7,7 +7,10 @@
 content_tag(:div,
   content_tag(:div, :id => :teaser) {
     tag(:img, :src => assets_path('title.png')) +
-    content_tag(:p, 'Coming soon', :class => :t)
+    content_tag(:p, 'Coming soon', :class => :t) +
+    content_tag(:p,
+      content_tag(:a, 'Seeking Beta testers', :href => 'http://bit.ly/yswm9J')
+    )
   },
   :id => 'wrapper'
 )

@@ -2,9 +2,9 @@ body {
   background:#000;
   color:#ccc;
   font-family:Helvetica, sans-serif;
-  font-size:180%;
+  font-size:90%;
   margin:0;
-  padding:20px 0 0 0;
+  padding:10px 0 0 0;
   text-align:center;
 }
 
@@ -12,3 +12,28 @@ img {
   border:0;
 }
 
+a {
+  color:#999;
+  &:active {
+	color:#fff;
+	background:#c00;
+	text-decoration:none;
+  }
+}
+
+#teaser {
+  img {
+    width:280px;
+    height:280px;
+  }
+  p {
+	  margin:0;
+  }
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+}
+
+/* iPhone */
+@media only screen and (max-device-width: 480px) {
+}

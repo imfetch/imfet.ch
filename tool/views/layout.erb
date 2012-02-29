@@ -19,7 +19,7 @@ content_tag(:html,
     tag(:meta, :itemprop => 'description',    :content => description) +
     tag(:meta, :itemprop => 'image',          :content => assets_path('icon-512x512.png')) +
     tag(:meta, :name     => 'description',    :content => description) +
-    tag(:meta, :name     => 'viewport',       :content => 'width=640,user-scalable=no,initial-scale=0.5') +
+    tag(:meta, :name     => 'viewport',       :content => 'width=device-width,user-scalable=no,initial-scale=1') +
     tag(:link, :rel => 'stylesheet', :href => assets_path('application.css'), :type => 'text/css') +
     content_tag(:script, '', :src => assets_path('application.js'), :type => 'text/javascript') +
     apple_touch_icon +
