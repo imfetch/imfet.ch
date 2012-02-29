@@ -38,6 +38,6 @@ task :assets do
   File.open "#{bookmarklet}.txt", 'rb+' do |file|
     js = file.read
     file.pos = 0
-    file.write("javascript:#{js}")
+    file.write("javascript:#{js}/*         INSTALLED */")
   end
 end
