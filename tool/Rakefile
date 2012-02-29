@@ -7,10 +7,12 @@ require File.expand_path('../app/site', __FILE__)
 task :default => :compile
 
 task :compile do |t|
-  write('index.html', @site.render('index'))
-  write('install.html', @site.render('install'))
-  write('assets/application.js', @site.js)
-  write('assets/application.css', @site.css)
+  ['index', 'install'].each {|f|
+    write("#{f}.html", @site.render(f))
+  }
+  ['js', 'css'].each{|f|
+    write("assets/application.#{f}", @site.send(f))
+  }
 end
 
 def write filename, content

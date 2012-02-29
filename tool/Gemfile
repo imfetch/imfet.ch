@@ -3,5 +3,6 @@ gem 'compass'
 gem 'sass'
 gem 'sprockets'
 gem 'tilt'
+gem 'uglifier'
 
 
