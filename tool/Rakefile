@@ -32,4 +32,12 @@ task :assets do
   ].each {|f|
     env[f].write_to(File.expand_path("../../assets/#{ f.sub(/\.scss$/, '.css') }", __FILE__))
   }
+  bookmarklet = File.expand_path('../../assets/bookmarklet', __FILE__)
+  File.unlink("#{bookmarklet}.txt") if File.exists?("#{bookmarklet}.txt")
+  File.rename("#{bookmarklet}.js", "#{bookmarklet}.txt")
+  File.open "#{bookmarklet}.txt", 'rb+' do |file|
+    js = file.read
+    file.pos = 0
+    file.write("javascript:#{js}")
+  end
 end

@@ -41,7 +41,7 @@ class Site < ActionView::Base
   end
 
   def render tmpl
-    template.render(self) {  
+    template.render(self) {
       Tilt::ERBTemplate.new("#{view_path}/#{tmpl}.erb").render(self)
     }
   end
