@@ -23,7 +23,7 @@ task :assets do
   env.append_path 'assets'
   jar = File.expand_path('../lib/yuicompressor-2.4.7.jar', __FILE__)
   env.css_compressor = YUI::CssCompressor.new(:jar_file => jar)
-  env.js_compressor  = YUI::JavaScriptCompressor.new(:jar_file => jar)
+  env.js_compressor  = YUI::JavaScriptCompressor.new(:jar_file => jar, :munge => true)
   [
     'application.js',
     'application.scss',
