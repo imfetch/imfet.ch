@@ -1,23 +1,35 @@
 #!/usr/bin/env rake
 
 require File.expand_path('../app/site', __FILE__)
-@site = Site.new(ENV['SITE_HOST'])
-@site.view_path = File.expand_path('../views', __FILE__)
+require 'sprockets'
+require 'yui/compressor'
 
 task :default => :compile
+task :compile => [:html, :assets]
 
-task :compile do |t|
-  ['index', 'install'].each {|f|
-    write("#{f}.html", @site.render(f))
-  }
-  ['js', 'css'].each{|f|
-    write("assets/application.#{f}", @site.send(f))
+task :html do
+  site = Site.new(ENV['SITE_HOST'])
+  site.view_path = File.expand_path('../views', __FILE__)
+  [
+    'index',
+    'install'
+  ].each {|f|
+    site.write_html f, File.expand_path("../#{f}.html")
   }
 end
 
-def write filename, content
-  path = File.expand_path('../../'+ filename, __FILE__)
-  File.open path, 'w' do |file|
-    file.write(content)
-  end
+task :assets do
+  env = Sprockets::Environment.new
+  env.append_path 'assets'
+  jar = File.expand_path('../lib/yuicompressor-2.4.7.jar', __FILE__)
+  env.css_compressor = YUI::CssCompressor.new(:jar_file => jar)
+  env.js_compressor  = YUI::JavaScriptCompressor.new(:jar_file => jar)
+  [
+    'application.js',
+    'application.scss',
+    'b.js',
+    'bookmarklet.js',
+  ].each {|f|
+    env[f].write_to(File.expand_path("../../assets/#{ f.sub(/\.scss$/, '.css') }", __FILE__))
+  }
 end

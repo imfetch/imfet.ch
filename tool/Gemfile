@@ -4,5 +4,5 @@ gem 'sass'
 gem 'sprockets'
 gem 'tilt'
 gem 'uglifier'
-
+gem 'yui-compressor'
 

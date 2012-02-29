@@ -1,6 +1,10 @@
 GEM
   remote: http://rubygems.org/
   specs:
+    POpen4 (0.1.4)
+      Platform (>= 0.4.0)
+      open4
+    Platform (0.4.0)
     chunky_png (1.2.5)
     compass (0.11.7)
       chunky_png (~> 1.2)
@@ -11,16 +15,20 @@ GEM
     fssm (0.2.8.1)
     hike (1.2.1)
     multi_json (1.1.0)
+    open4 (1.3.0)
     rack (1.4.1)
     sass (3.1.10)
-    sprockets (2.1.2)
+    sprockets (2.3.1)
       hike (~> 1.2)
+      multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
     tilt (1.3.3)
     uglifier (1.2.3)
       execjs (>= 0.3.0)
       multi_json (>= 1.0.2)
+    yui-compressor (0.9.6)
+      POpen4 (>= 0.1.4)
 
 PLATFORMS
   ruby
@@ -31,3 +39,4 @@ DEPENDENCIES
   sprockets
   tilt
   uglifier
+  yui-compressor

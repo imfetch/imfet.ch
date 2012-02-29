@@ -45,16 +45,11 @@ class Site < ActionView::Base
       Tilt::ERBTemplate.new("#{view_path}/#{tmpl}.erb").render(self)
     }
   end
-
-  def css
-    Tilt::ScssTemplate.new("#{view_path}/application.scss").render(self)
-  end
-
-  def js
-    f = File.open("#{view_path}/application.js", 'r')
-    r = ''
-    f.each {|l| r << l }
-    Uglifier.compile(r)
+  
+  def write_html tmpl, path
+    File.open path, 'w' do |file|
+      file.write(render(tmpl))
+    end
   end
 
 end
